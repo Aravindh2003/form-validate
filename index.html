@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+<body>
+    <form>
+        <center>
+			<div style="background-color: aquamarine; width: 50%;">
+            <h1>Registration Form</h1>
+                <table>
+                    <tr>
+                        <td>Username:</td>
+                        <td><input type="text" id="ab" onblur="check()"></td>
+                        <td><p id="abc"></p></td>
+                    </tr>
+                    <tr>
+                        <td>Password:</td>
+                        <td><input type="password" id="bc" onblur="check1()"></td>
+                        <td><p id="bcd"></p></td>
+                    </tr>
+					<tr>
+						<td>confirm password:</td>
+						<td><input type="password" id="cd" onblur="check2()"></td>
+						<td><p id="cde"></p></td>
+					</tr>
+					<tr>
+						<td>Sex:</td>
+						<td><input type="radio" name="name">Male</td>
+						<td><input type="radio" name="name">Female</td>
+					</tr>
+					<tr>
+						<td>Email:</td>
+						<td><input type="email" id="de" onblur="check4()"></td>
+						<td><p id="def"></p></td>
+					</tr>
+					<tr>
+						<td>Address:</td>
+						<td><input type="text" id="ef" onblur="check5()"></td>
+						<td><p id="efg"></p></td>
+					</tr>
+					<tr>
+						<td>Line1:</td>
+						<td><input type="text" id="fg" onblur="check6()"></td>
+						<td><p id="fgh"></p></td>
+					</tr>
+					<tr>
+						<td>Pincode:</td>
+						<td><input type="text" id="gh" onblur="check7()"></td>
+						<td><p id="ghi"></p></td>
+					</tr>
+                </table>
+				<input type="submit" onclick="check3()">
+			</div>
+        </center>
+    </form>
+    <script>
+function check()
+{
+abc.innerText="";
+var name1=document.getElementById("ab").value;
+			if(name1.length<2)
+				{
+				abc.innerText="Field should be filled";
+				f1=0;
+				}
+var re=new RegExp("^[0-9]");
+			if(re.test(name1))
+				{
+				abc.innerText="User name should not start with a digit";
+				f1=0;
+				}
+}
+function check1()
+{
+bcd.innerText="";
+var passone = document.getElementById("bc").value;
+var invalid = " ";
+var minLength = 6; 
+			if(passone== "")
+				{
+				bcd.innerText="Field should be filled";
+				f1=0;
+				}
+			else if(passone.length < minLength)
+				{
+				bcd.innerText='Your password must be at least ' + minLength + ' characters long. Try again';
+				f1=0;
+				}
+			else if(passone.indexOf(invalid) > -1)
+				{
+				bcd.innerText="Sorry, spaces are not allowed.";
+				f1=0;
+				}
+}
+function check2(){
+cde.innerText="";
+var df=document.getElementById("bc");
+var pd=document.getElementById("cd");
+			if(pd.value == "")
+				{
+				cde.innerText="Field should be filled";
+				f1=0;
+				}
+	        else if(pd.value == df.value)
+	         {
+		        cde.innerText="correct password";
+				f1=1;
+	           }
+	          else{
+		        cde.innerText="wrong password";
+				f1=0;
+	           }
+} 
+function check3(){
+	        if(f1==0)
+				alert("Your Registeration is not successful");
+			else
+				alert("Your registeration is successful");
+	}
+
+function check4()
+{
+def.innerText="";
+var name=document.getElementById("de").value;
+               if(name == "")
+				{
+				def.innerText="Field should be filled";
+				f1=0;
+				}
+var re2=new RegExp("^[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,4}$");
+              if(re2.test(name)){
+				def.innerText="correct mail";
+				f1=1;
+			  }
+              if(!re2.test(name)){
+			    def.innerText="incorrect mail";
+				f1=0;
+			  }
+			 
+}
+function check5(){
+efg.innerText="";
+var name2=document.getElementById("ef").value;
+if(name2.length<1){
+	efg.innerText="Field should be filled";
+	f1=0;
+}
+}
+function check6()
+{
+fgh.innerText="";
+var name3=document.getElementById("fg").value;
+if(name3.length<1){
+	fgh.innerText="Field should be filled";
+	f1=0;
+}
+}
+function check7(){
+ghi.innerText="";
+var name3=document.getElementById("gh").value;
+if(name3.length<1){
+	ghi.innerText="Field should be filled";
+	f1=0;
+}
+var re3=new RegExp("^[0-9]+$");
+if(!re3.test(name3)){
+    ghi.innerText="Field should not contain text";
+	f1=0;
+}
+else{
+	ghi.innerText="";
+	f1=1;
+}
+}
+</script>
+</body>
+</html>
